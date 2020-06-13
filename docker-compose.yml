@@ -10,7 +10,7 @@ services:
         ports:
             - 8000:8000
         env_file: .env
-        command: django-admin runserver 0.0.0.0:8000
+        command: django-admin runserver 0.0.0.0:8000 #python manage.py
         links:
             - db
         depends_on:
