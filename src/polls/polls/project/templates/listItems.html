@@ -1,0 +1,16 @@
+<H3>Lista items </H3>
+<form>
+    {% csrf_token %}
+    {{form}}
+
+</form>
+
+
+ {% for items in shopping_item %}
+        <div>
+            <p><label> Nume: {{ items.name }} </label></p>
+            <p><label> Cantitate: {{ items.quantity }} </label></p>
+
+
+        </div>
+        {% endfor %}

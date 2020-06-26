@@ -1,0 +1,15 @@
+<H3>Titlu Aplicatie </H3>
+<form method="post" >
+    {% csrf_token %}
+    {{form}}
+    <input type = "submit" value="ADD" name="Create Shoppinglist">
+</form>
+
+        {% for list in shopping_list %}
+        <div>
+            <a href="{% url 'items' list.id %}">
+            <p> {{ list.name }} </p>
+            </a>
+
+        </div>
+        {% endfor %}
