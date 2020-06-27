@@ -1,15 +1,31 @@
 <H3>Lista items </H3>
-<form>
+<p> User Logat: "{{ curent }}" ? </p>
+<H5><a href = "{% url 'list' %}">Go back to Shopping List</a></H5>
+<form method="post">
     {% csrf_token %}
     {{form}}
-
+    <input type = "submit" value="ADD item" name="Create Shoppinglist">
 </form>
 
 
  {% for items in shopping_item %}
         <div>
-            <p><label> Nume: {{ items.name }} </label></p>
+            <a href="{% url 'delete_item' items.id %}">Delete</a>
+            <a href="{% url 'update_item' items.id %}">Update</a>
+
+            {% if items.complete == True %}
+            <strike><p><label> Nume: {{ items.name }} </label></p></strike>
+            {% else %}
+            <span><p>Nume: {{ items.name }}</p></span>
             <p><label> Cantitate: {{ items.quantity }} </label></p>
+            <p><label> Complete: {{ items.complete }} </label></p>
+
+            {% endif %}
+
+</form>
+
+ {% empty %}
+            Lista este goala!!
 
 
         </div>

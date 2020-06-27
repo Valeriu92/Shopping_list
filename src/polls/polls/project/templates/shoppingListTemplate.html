@@ -1,5 +1,5 @@
 <H3>Titlu Aplicatie </H3>
-<form method="post" >
+<form method="post" name="AddList">
     {% csrf_token %}
     {{form}}
     <input type = "submit" value="ADD" name="Create Shoppinglist">
@@ -7,9 +7,8 @@
 
         {% for list in shopping_list %}
         <div>
-            <a href="{% url 'items' list.id %}">
-            <p> {{ list.name }} </p>
-            </a>
+            <a href="{% url 'items' list.id %}"><p> {{ list.name }} </p></a>
+            <a href="{% url 'delete_list' list.id %}">Delete</a>
 
         </div>
         {% endfor %}
