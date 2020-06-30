@@ -1,4 +1,4 @@
-<H3>Titlu Aplicatie </H3>
+{% include "base.html" %}
 <form method="post" name="AddList">
     {% csrf_token %}
     {{form}}
@@ -9,6 +9,7 @@
         <div>
             <a href="{% url 'items' list.id %}"><p> {{ list.name }} </p></a>
             <a href="{% url 'delete_list' list.id %}">Delete</a>
+            <a href="{% url 'update_list' list.id %}">Update</a>
 
         </div>
         {% endfor %}

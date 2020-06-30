@@ -13,12 +13,12 @@ class Users(models.Model):
 
 class ShoppingList(models.Model):
     name = models.CharField(max_length= 50, null = False)
-    #owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shopping_lists')
+    owner = models.ManyToManyField(User)
     date_created = models.DateTimeField(auto_now_add= True)
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.name + ' ' + str(self.owner.first())
 
 class ShoppingItem(models.Model):
     name = models.CharField(max_length= 50, null = False)

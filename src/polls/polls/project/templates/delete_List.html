@@ -1,8 +1,9 @@
-<p> Are you sure you want to delete "{{ list }}" ? </p>
+<p> Are you sure you want to delete "{{ list.name }}" ? </p>
 
 <a href = "{% url 'list' %}" > Cancel </a>
 
 <form method="post">
     {% csrf_token %}
-    <input type="submit" name="Confirm">
+    <input type="submit" value="Delete" name="Confirm">
+
 </form>
