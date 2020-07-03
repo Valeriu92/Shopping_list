@@ -1,15 +1,28 @@
+{% include "navbar.html" %}
 {% include "base.html" %}
+            <h1>Add new list</h1>
+
+<div class = "center-column">
+            <h1>Add new list</h1>
+
 <form method="post" name="AddList">
     {% csrf_token %}
     {{form}}
-    <input type = "submit" value="ADD" name="Create Shoppinglist">
+    <input class = "btn btn-info" type = "submit" value="ADD" name="Create Shoppinglist">
 </form>
 
+            <h1>Your lists:</h1>
+
         {% for list in shopping_list %}
-        <div>
-            <a href="{% url 'items' list.id %}"><p> {{ list.name }} </p></a>
-            <a href="{% url 'delete_list' list.id %}">Delete</a>
-            <a href="{% url 'update_list' list.id %}">Update</a>
+        <div class="item-row">
+            <a class = "btn btn-sm btn-danger" href="{% url 'delete_list' list.id %}">Delete</a>
+            <a class = "btn btn-sm btn-info " href="{% url 'update_list' list.id %}">Update</a>
+            <a class = "bold" style = "color:white" href="{% url 'items' list.id %}">{{ list.name }}</a>
+
 
         </div>
+            {% empty %}
+                <h4 style="color:red">You currently don't have any list added!</h4>
         {% endfor %}
+
+</div>

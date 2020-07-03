@@ -1,32 +1,37 @@
-<H3>Lista items </H3>
-<p> User Logat: "{{ curent }}" !! </p>
-<H5><a href = "{% url 'list' %}">Go back to Shopping List</a></H5>
+{% include "navbar.html" %}
+                <H1>Home</H1>
+                <H1>Add new item to {{ listname.name}}</H1>
+
+
 <form method="post">
     {% csrf_token %}
+
     {{form}}
-    <input type = "submit" value="ADD item" name="Create Shoppinglist">
+    <input style = "width:5%" class = "btn btn-sm btn-info" type = "submit" value="ADD" name="Create Shoppinglist">
 </form>
 
+<div class = "center-column">
+<H1> {{ listname.name}} items: </H1>
 
- {% for items in shopping_item %}
-        <div>
-            <a href="{% url 'delete_item' items.id %}">Delete</a>
-            <a href="{% url 'update_item' items.id %}">Update</a>
+
+{% for items in shopping_item %}
+        <div class="item-row">
+            <a class = "btn btn-sm btn-danger" href="{% url 'delete_item' items.id %}">Delete</a>
+            <a class = "btn btn-sm btn-info " href="{% url 'update_item' items.id %}">Update</a>
 
             {% if items.complete == True %}
-            <strike><p><label> Nume: {{ items.name }} </label></p></strike>
+            <strike><p style="text-align: center;"> Name: {{ items.name }} </p></strike>
             {% else %}
-            <span><p>Nume: {{ items.name }}</p></span>
-            <p><label> Cantitate: {{ items.quantity }} </label></p>
-            <p><label> Complete: {{ items.complete }} </label></p>
+            <p style="text-align: center;">Name: {{ items.name }}</p>
+            <p> Brand: {{ items.marca }} </p>
+            <p> Quantity: {{ items.quantity }} </p>
+            <p> Weight: {{ items.gramaj }} </p>
+            <p> Store: {{ items.magazin }} </p>
 
             {% endif %}
+         </div>
 
-</form>
-
- {% empty %}
-            Lista este goala!!
-
-
-        </div>
+{% empty %}
+                <h4 style="color:red">You currently don't have any item added!</h4>
         {% endfor %}
+</div>

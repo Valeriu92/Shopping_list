@@ -1,9 +1,16 @@
-<p> Are you sure you want to delete "{{ list.name }}" ? </p>
+{% include "baseDelete.html" %}
 
-<a href = "{% url 'list' %}" > Cancel </a>
+<div class = "center-column">
+<h4> Are you sure you want to delete "{{ list.name }}" ? </h4>
+    <p></p>
+
+<a class = "btn btn-sm btn-info" href = "{% url 'list' %}" > Cancel </a>
+      <p></p>
 
 <form method="post">
     {% csrf_token %}
-    <input type="submit" value="Delete" name="Confirm">
+    <input class = "btn btn-sm btn-danger" type="submit" value="Delete" name="Confirm">
 
 </form>
+
+</div>

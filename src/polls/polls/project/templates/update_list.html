@@ -1,7 +1,14 @@
-<h3>Update List</h3>
+{% include "navbar.html" %}
+
+<div class = "center-column" style="background-color: white;">
+<h1>Update list</h1>
 
 <form method="post">
     {% csrf_token %}
     {{form}}
-    <input type="submit" name="Update List">
+    <input style = "width:100%;"  class = "btn btn-info" type="submit" value = "Save" name="Update List">
+    <p></p>
+    <a style = "width:100%;" class = "btn btn-sm btn-info" href = "{% url 'list' %}" > Cancel </a>
 </form>
+
+</div>
