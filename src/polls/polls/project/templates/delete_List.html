@@ -1,16 +1,14 @@
 {% include "baseDelete.html" %}
 
 <div class = "center-column">
-<h4> Are you sure you want to delete "{{ list.name }}" ? </h4>
-    <p></p>
+<h4 style="text-align:center;"> Are you sure you want to delete "{{ list.name }}" ? </h4>
+<p></p>
 
-<a class = "btn btn-sm btn-info" href = "{% url 'list' %}" > Cancel </a>
-      <p></p>
+
+    <a class = "btn btn-sm btn-info butn1" href = "{% url 'list' %}" > Cancel </a>
 
 <form method="post">
     {% csrf_token %}
-    <input class = "btn btn-sm btn-danger" type="submit" value="Delete" name="Confirm">
-
+    <input class = "btn btn-sm btn-danger butn2" type="submit" value="Delete" name="Confirm">
 </form>
-
 </div>

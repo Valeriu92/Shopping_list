@@ -1,6 +1,6 @@
 {% include "navbar.html" %}
 {% include "base.html" %}
-            <h1>Add new list</h1>
+            <h1 style="color:transparent">Add new list</h1>
 
 <div class = "center-column">
             <h1>Add new list</h1>
@@ -17,12 +17,15 @@
         <div class="item-row">
             <a class = "btn btn-sm btn-danger" href="{% url 'delete_list' list.id %}">Delete</a>
             <a class = "btn btn-sm btn-info " href="{% url 'update_list' list.id %}">Update</a>
-            <a class = "bold" style = "color:white" href="{% url 'items' list.id %}">{{ list.name }}</a>
+            <a class = "bold" style = "text-align:center;" href="{% url 'items' list.id %}">{{ list.name }}</a>
 
 
         </div>
             {% empty %}
+                        <div class="item-row">
+
                 <h4 style="color:red">You currently don't have any list added!</h4>
+                        </div>
         {% endfor %}
 
 </div>

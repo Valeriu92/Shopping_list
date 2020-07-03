@@ -1,7 +1,11 @@
 {% include "navbar.html" %}
-                <H1>Home</H1>
-                <H1>Add new item to {{ listname.name}}</H1>
+{% include "collapsibleItem.html" %}
 
+
+
+                <H1 style="color:transparent">Home</H1>
+                 <p style="color:transparent">Home</p>
+                <H1>Add new item to {{ listname.name}}</H1>
 
 <form method="post">
     {% csrf_token %}
@@ -18,20 +22,44 @@
         <div class="item-row">
             <a class = "btn btn-sm btn-danger" href="{% url 'delete_item' items.id %}">Delete</a>
             <a class = "btn btn-sm btn-info " href="{% url 'update_item' items.id %}">Update</a>
-
+            <p></p>
             {% if items.complete == True %}
             <strike><p style="text-align: center;"> Name: {{ items.name }} </p></strike>
             {% else %}
-            <p style="text-align: center;">Name: {{ items.name }}</p>
-            <p> Brand: {{ items.marca }} </p>
-            <p> Quantity: {{ items.quantity }} </p>
-            <p> Weight: {{ items.gramaj }} </p>
-            <p> Store: {{ items.magazin }} </p>
+                <button class="collapsible">{{ items.name }}</button>
+                <div class="content">
+                    <p> Brand: {{ items.marca }} </p>
+                    <p> Quantity: {{ items.quantity }} </p>
+                    <p> Weight: {{ items.gramaj }} </p>
+                    <p> Store: {{ items.magazin }} </p>
+                </div>
+
 
             {% endif %}
+
          </div>
 
 {% empty %}
+            <div class="item-row">
+
                 <h4 style="color:red">You currently don't have any item added!</h4>
+            </div>
         {% endfor %}
 </div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
