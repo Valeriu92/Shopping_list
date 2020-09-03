@@ -1,0 +1,29 @@
+{% include "navbar.html" %}
+
+<div class = "center-column" style="background-color: white;">
+
+        {% if messages %}
+
+    {% for message in messages %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Warning!</strong> {{ message }}
+</div>
+{% endfor %}
+
+{% endif %}
+
+<h1>Update list</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+
+        <p></p>
+        <a class = "btn  btn-info butn2" href = "{% url 'list' %}" > Cancel </a>
+        <input  class = "btn  btn-info butn1 " type="submit" value = "Save" name="Update List">
+
+
+</form>
+<h1 style="color:transparent">Update list</h1>
+</div>

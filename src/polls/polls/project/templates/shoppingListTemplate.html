@@ -1,15 +1,55 @@
-<H3>Titlu Aplicatie </H3>
-<form method="post" >
+{% include "navbar.html" %}
+{% include "base.html" %}
+            <h1 style="color:transparent">Add new list</h1>
+
+
+<div class = "center-column">
+
+
+    {% if messages %}
+
+    {% for message in messages %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Warning!</strong> {{ message }}
+</div>
+{% endfor %}
+
+{% endif %}
+
+            <h1>Add new list</h1>
+
+<form method="post" name="AddList">
     {% csrf_token %}
     {{form}}
-    <input type = "submit" value="ADD" name="Create Shoppinglist">
+    <input class = "btn btn-info" type = "submit" value="ADD" name="Create Shoppinglist">
 </form>
 
+            <h1>Your lists:</h1>
+
+
         {% for list in shopping_list %}
-        <div>
-            <a href="{% url 'items' list.id %}">
-            <p> {{ list.name }} </p>
-            </a>
+        <div class="item-row">
+            <a class = "btn btn-sm btn-danger" href="{% url 'delete_list' list.id %}">Delete</a>
+            <a class = "btn btn-sm btn-info " href="{% url 'update_list' list.id %}">Update</a>
+            <a class = "bold" style = "text-align:center;" href="{% url 'items' list.id %}">{{ list.name }}</a>
+
+            {% if list.owner.count >= 2 %}
+                {% for u in list.owner.all %}
+                    {% if u != user %}
+                        <p class = "bold" style = "text-align:center;"> List shared with: {{ u }};  </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
 
         </div>
+            {% empty %}
+                        <div class="item-row">
+
+                <h4 style="color:red">You currently don't have any list added!</h4>
+                        </div>
         {% endfor %}
+
+
+
+</div>
