@@ -10,6 +10,7 @@ urlpatterns = [
     path('update_item/<int:pk>/', Update_ShoppingItem, name="update_item"),
     path('update_list/<int:pk>/', Update_ShoppingList, name="update_list"),
     path('login', LoginView.as_view(template_name = 'login.html'), name="login"),
-    path('logout', LogoutView.as_view(), name="logout")
+    path('logout', LogoutView.as_view(), name="logout"),
+    path('image',Display_imagge)
 
 ]

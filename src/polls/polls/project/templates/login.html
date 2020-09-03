@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+{% load static %}
 
 <style>
 
@@ -46,18 +46,39 @@
 		border-color: #e59400;
 	}
 
+#demoimage {
+  float: left ;
+}
+
+#demotext {
+  float: left ;
+  margin: 10px auto;
+}
+
+#democontainer {
+  width: 400px ;
+  max-width: 100% ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
 
 </style>
 
 <div class="container">
 
-        <h2>Login</h2>
+    <div id = "democontainer">
+        <img id="demoimage" src="{% static 'templates/images/logo.png' %}" width="70" height="70">
+        <ul id="demotext">
+            <h2>Login</h2>
+        </ul>
+        <br style="clear: both;">
+    </div>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
 
             <button type="submit">Login </button>
-
 
         </form>
 </div>

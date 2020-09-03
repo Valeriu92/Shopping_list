@@ -1,6 +1,18 @@
 {% include "navbar.html" %}
 
 <div class = "center-column" style="background-color: white;">
+
+        {% if messages %}
+
+    {% for message in messages %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Warning!</strong> {{ message }}
+</div>
+{% endfor %}
+
+{% endif %}
+
 <h1>Update list</h1>
 
 <form method="post">

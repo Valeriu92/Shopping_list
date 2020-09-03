@@ -1,10 +1,8 @@
 {% include "navbar.html" %}
 {% include "collapsibleItem.html" %}
 
-
-
                 <H1 style="color:transparent">Home</H1>
-                 <p style="color:transparent">Home</p>
+
                 <H1>Add new item to {{ listname.name}}</H1>
 
 <form method="post">
@@ -15,6 +13,18 @@
 </form>
 
 <div class = "center-column">
+
+    {% if messages %}
+
+    {% for message in messages %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Warning!</strong> {{ message }}
+</div>
+{% endfor %}
+
+{% endif %}
+
 <H1> {{ listname.name}} items: </H1>
 
 
@@ -22,12 +32,14 @@
         <div class="item-row">
             <a class = "btn btn-sm btn-danger" href="{% url 'delete_item' items.id %}">Delete</a>
             <a class = "btn btn-sm btn-info " href="{% url 'update_item' items.id %}">Update</a>
+
             <p></p>
             {% if items.complete == True %}
             <strike><p style="text-align: center;"> Name: {{ items.name }} </p></strike>
             {% else %}
                 <button class="collapsible">{{ items.name }}</button>
                 <div class="content">
+
                     <p> Brand: {{ items.marca }} </p>
                     <p> Quantity: {{ items.quantity }} </p>
                     <p> Weight: {{ items.gramaj }} </p>

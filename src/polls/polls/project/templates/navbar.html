@@ -1,3 +1,4 @@
+{% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <head>
@@ -28,12 +29,12 @@ ul {
   padding: 0;
   overflow: hidden;
   border: 1px solid #e7e7e7;
-  background-color: #f3f3f3;
+  background-color: lightblue ;
 }
 
 li {
   float: left;
-  border-right:1px solid #bbb;
+  border-right:1px solid lightblue;
 }
 
 li:last-child {
@@ -59,8 +60,8 @@ li a.active {
 
 	.center-column{
 		width:600px;
-		margin: 80px auto;
-		padding:30px;
+		margin: 40px auto;
+		padding:50px;
 		background-color: #fff;
 		border-radius: 10px;
 		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
@@ -90,15 +91,49 @@ h1 {
 }
 
 
+
+img.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+/* pentru alert messages */
+
+.alert {
+  padding: 20px;
+  background-color: #faad14;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
 </style>
 </head>
 <body>
 <ul>
-  <li><a class="active" href="/">View Lists</a></li>
-  <li style = "float:right"><a href="{% url 'logout' %}">Logout</a></li>
-  <li style = "float:right"><a>Welcome {{user}} !</a></li>
+  <li style = "float:left" ><a style = "color:black" href="/">View Lists</a></li>
+  <img class = "center" src="{% static 'templates/images/logo.png' %}" style = "width: 50;width: 50;">
+  <li style = "float:right"><a style = "color:black" href="{% url 'logout' %}"> Logout </a></li>
+  <li style = "float:right"><a style = "color:black">Welcome {{user}} !</a></li>
 </ul>
 
 
 </body>
-</html>
